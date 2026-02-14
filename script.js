@@ -130,29 +130,27 @@ function postMessage(persona, text, isUser = false) {
 
 // AI Message Fetching
 async function getAIResponse(prompt, isUserResponse = false) {
-    // If no real API key, use fallback streams
     if (CONFIG.HF_API_KEY === "YOUR_HUGGING_FACE_API_KEY") {
         return BACKUP_STREAMS[Math.floor(Math.random() * BACKUP_STREAMS.length)];
     }
 
     try {
         const payload = isUserResponse
-            ? `<s>[INST] You are a hacker AI. A user said: "${prompt}". Reply in 1 short sentence mixed with Bangla and English. [/INST]`
-            : `<s>[INST] Send a mysterious hacker system log or cool cryptic thought. Short, max 15 words. Mix Bangla and English. [/INST]`;
+            ? `<s>[INST] Brief hacker reply (max 10 words) to: "${prompt}". Mix Bangla/English. [/INST]`
+            : `<s>[INST] One cryptic hacker line (max 8 words). Mix Bangla/English. [/INST]`;
 
         const response = await fetch(`https://api-inference.huggingface.co/models/${CONFIG.MODEL}`, {
             headers: { Authorization: `Bearer ${CONFIG.HF_API_KEY}`, "Content-Type": "application/json" },
             method: "POST",
-            body: JSON.stringify({ inputs: payload, parameters: { max_new_tokens: 30, temperature: 0.95 } })
+            body: JSON.stringify({ inputs: payload, parameters: { max_new_tokens: 20, temperature: 0.9 } })
         });
 
         const result = await response.json();
         let text = result[0].generated_text;
-        // Simple extraction
         if (text.includes('[/INST]')) {
             text = text.split('[/INST]')[1].trim();
         }
-        return text;
+        return text.length > 60 ? text.substring(0, 57) + "..." : text;
     } catch (e) {
         return BACKUP_STREAMS[Math.floor(Math.random() * BACKUP_STREAMS.length)];
     }
