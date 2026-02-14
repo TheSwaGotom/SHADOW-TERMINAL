@@ -329,17 +329,22 @@ header.chat-header {
 }
 
 /* --- SYSTEM AD MODULES --- */
+/* --- SYSTEM AD MODULES --- */
 .system-ad {
     border: 1px solid var(--border-glow);
-    background: rgba(0, 255, 65, 0.02);
+    background: transparent;
     position: relative;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 50px;
     z-index: 10 !important;
     pointer-events: auto !important;
+}
+
+/* Ensure banner doesn't break mobile layout */
+.banner-728 iframe {
+    max-width: 100%;
 }
 
 .system-ad::after {
