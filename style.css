@@ -1,7 +1,7 @@
 /* 
- * AntyGravity // Hacker Chat Style System
+ * ShadowChatRoom // Hacker Chat Style System
  * Theme: Cyberpunk / Matrix / Terminal
- * Author: AntyGravity AI
+ * Author: ShadowChatRoom AI
  */
 
 :root {
@@ -27,7 +27,8 @@ body {
     background-color: var(--bg-color);
     color: var(--terminal-green);
     font-family: var(--font-main);
-    overflow: hidden; /* Prevent full page scroll, let chat scroll */
+    overflow: hidden;
+    /* Prevent full page scroll, let chat scroll */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -44,11 +45,9 @@ body::before {
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(
-        to bottom,
-        var(--scanline-color) 50%,
-        rgba(0, 0, 0, 0.25) 50%
-    );
+    background: linear-gradient(to bottom,
+            var(--scanline-color) 50%,
+            rgba(0, 0, 0, 0.25) 50%);
     background-size: 100% 4px;
     z-index: 999;
     pointer-events: none;
@@ -56,8 +55,13 @@ body::before {
 }
 
 @keyframes scanline {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 100%; }
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
 }
 
 /* Layout Container */
@@ -124,11 +128,14 @@ body::before {
 }
 
 @keyframes blinker {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Ads - Banner & Native */
-.ad-banner, .ad-native {
+.ad-banner,
+.ad-native {
     width: 100%;
     min-height: 60px;
     background: #020202;
@@ -177,7 +184,9 @@ body::before {
 }
 
 @keyframes fadeIn {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Message Components */
@@ -194,12 +203,35 @@ body::before {
 }
 
 /* Persona Colors */
-.persona-phantom { color: #d600ff; } /* Purple */
-.persona-ghost { color: #00f3ff; } /* Cyan */
-.persona-neural { color: #00ff41; } /* Green */
-.persona-shadow { color: #ff0055; } /* Red */
-.persona-alien { color: #eaff00; } /* Yellow */
-.persona-user { color: #ffffff; text-shadow: 0 0 5px #fff; }
+.persona-phantom {
+    color: #d600ff;
+}
+
+/* Purple */
+.persona-ghost {
+    color: #00f3ff;
+}
+
+/* Cyan */
+.persona-neural {
+    color: #00ff41;
+}
+
+/* Green */
+.persona-shadow {
+    color: #ff0055;
+}
+
+/* Red */
+.persona-alien {
+    color: #eaff00;
+}
+
+/* Yellow */
+.persona-user {
+    color: #ffffff;
+    text-shadow: 0 0 5px #fff;
+}
 
 .msg-content {
     color: #ddd;
@@ -236,13 +268,16 @@ body::before {
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: #000;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--dim-gray);
     border: 1px solid var(--terminal-green);
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--terminal-green);
 }
@@ -250,9 +285,10 @@ body::before {
 /* Responsive Design */
 @media (max-width: 768px) {
     .ad-sidebar {
-        display: none; /* Hide sidebars on mobile */
+        display: none;
+        /* Hide sidebars on mobile */
     }
-    
+
     .chat-header h1 {
         font-size: 1rem;
     }

@@ -1,7 +1,7 @@
 /* 
- * AntyGravity // AI Chat Engine
+ * ShadowChatRoom // AI Chat Engine
  * Logic: Hugging Face API Integration for real-time AI generation.
- * Author: AntyGravity AI
+ * Author: ShadowChatRoom AI
  */
 
 // 1. CONFIGURATION
