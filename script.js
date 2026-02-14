@@ -189,11 +189,19 @@ input.addEventListener('keypress', async (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     initMatrix();
     initVitals();
+
+    // Pre-populate with mysterious traffic
     setTimeout(() => {
-        postMessage({ name: "SYSTEM", color: "#666" }, ">> INITIALIZING NEURAL_LINK...");
+        postMessage({ name: "SYSTEM", color: "#666" }, "Establishing secure tunnel...");
+
         setTimeout(() => {
-            postMessage({ name: "SYSTEM", color: "#00ff41" }, ">> CONNECTION_STABLE. NODE_09 ONLINE.");
+            // Initial burst of 3 small messages
+            for (let i = 0; i < 3; i++) {
+                const persona = PERSONAS[i];
+                const msg = BACKUP_STREAMS[i];
+                postMessage(persona, msg);
+            }
             aiPulse();
-        }, 1200);
+        }, 1000);
     }, 500);
 });

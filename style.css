@@ -244,32 +244,39 @@ header.chat-header {
 }
 
 .persona-info {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    /* Smaller persona tag */
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    /* Reduced margin */
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     text-shadow: 0 0 5px currentColor;
 }
 
 .persona-info::before {
     content: ">>";
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: inherit;
 }
 
 .msg-text {
     background: rgba(0, 255, 65, 0.04);
     border: 1px solid var(--border-glow);
-    padding: 8px 15px;
+    padding: 6px 12px;
+    /* Super compact padding */
     border-radius: 4px;
-    line-height: 1.4;
-    font-size: 0.85rem;
+    line-height: 1.3;
+    /* Tighter line height */
+    font-size: 0.8rem;
+    /* Smaller font */
     position: relative;
     backdrop-filter: blur(5px);
     transition: all 0.2s;
     word-break: break-word;
+    display: inline-block;
+    /* Bubble wraps content tightly */
 }
 
 .user-item .msg-text {
@@ -280,7 +287,7 @@ header.chat-header {
 
 .msg-text:hover {
     border-color: var(--neon-primary);
-    box-shadow: 0 0 15px var(--terminal-dim);
+    box-shadow: 0 0 10px var(--terminal-dim);
 }
 
 /* --- INPUT INTERFACE --- */
