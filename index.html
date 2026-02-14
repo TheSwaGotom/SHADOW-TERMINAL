@@ -20,9 +20,6 @@
     <!-- Professional Assets -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- ADSTERRA CORE SYSTEM (Direct Injection) -->
-    <script type='text/javascript' src='//www.highperformanceformat.com/28613368/invoke.js'></script>
-    <script type='text/javascript' src='//www.highperformanceformat.com/28613383/invoke.js'></script>
 </head>
 
 <body>
@@ -56,8 +53,14 @@
 
             <div class="separator"></div>
 
-            <!-- Vertical Ad Slot -->
-            <div class="system-ad" style="height: 400px; width: 100%;">
+            <!-- Manually Trigger Smartlink (Zone 28613374) -->
+            <button onclick="window.open('https://www.highperformanceformat.com/28613374/invoke.js', '_blank')"
+                style="background: transparent; border: 1px solid var(--neon-primary); color: var(--neon-primary); padding: 10px; font-family: inherit; font-size: 0.7rem; cursor: pointer; width: 100%; transition: 0.3s; margin-bottom: 20px;">
+                [VERIFY_AD_UPLINK]
+            </button>
+
+            <!-- Vertical Ad Slot placeholder -->
+            <div class="system-ad" style="height: 300px; width: 100%;">
                 <div style="color: rgba(0,255,65,0.2); font-size: 0.6rem;">[SECURE_AD_UPLINK]</div>
             </div>
         </aside>
@@ -73,7 +76,7 @@
                 </div>
             </header>
 
-            <!-- Top Banner (728x90) -->
+            <!-- Top Banner (728x90) (Zone: 28613389) -->
             <div class="system-ad banner-728">
                 <script type="text/javascript">
                     atOptions = {
@@ -84,7 +87,7 @@
                         'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/28613389/invoke.js"></script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/28613389/invoke.js"></script>
             </div>
 
             <!-- Dynamic Chat Feed -->
@@ -107,7 +110,7 @@
                 <span>NODE_09</span>
             </div>
 
-            <!-- Native Ad (Zone ID: 28613380) -->
+            <!-- Native Ad (Zone: 28613380) -->
             <div class="system-ad" style="height: 250px; width: 100%; margin-bottom: 20px;">
                 <script type="text/javascript">
                     atOptions = {
@@ -118,7 +121,7 @@
                         'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/28613380/invoke.js"></script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/28613380/invoke.js"></script>
             </div>
 
             <div class="system-ad" style="height: 350px; width: 100%;">
@@ -130,13 +133,13 @@
     <!-- CORE LOGIC -->
     <script src="script.js"></script>
 
-    <!-- ADSTERRA GLOBAL SCRIPTS (Placed at the bottom for better performance) -->
+    <!-- ADSTERRA GLOBAL SCRIPTS -->
+    <script type='text/javascript' src='https://www.highperformanceformat.com/28613368/invoke.js'></script>
+    <script type='text/javascript' src='https://www.highperformanceformat.com/28613383/invoke.js'></script>
 
-    <!-- 3. SMARTLINK (Zone ID: 28613374) -->
     <script type="text/javascript">
-        console.log("NET_NODE_READY: 28613374");
+        console.log("NET_NODES_READY: 28613374, 28613368, 28613383");
     </script>
-
 </body>
 
 </html>
