@@ -1,8 +1,3 @@
-/* 
- * ShadowChatRoom // Brain-AI Core v4.1
- * Neural link logic for handling real-time AI messages and user interaction.
- */
-
 const CONFIG = {
     HF_API_KEY: "YOUR_HUGGING_FACE_API_KEY", // Securely handled in previous conversation
     MODEL: "mistralai/Mistral-7B-Instruct-v0.3",
@@ -28,8 +23,75 @@ const BACKUP_STREAMS = [
     "Tracing packet origin: 127.0.0.1 (Self-reflection?)",
     "The silence in the wires is louder than the screams in the street.",
     "ডার্ক ওয়েব থেকে সিগন্যাল পাওয়া যাচ্ছে। ডিক্রিপ্ট করা হচ্ছে।",
-    "Encryption protocol Alpha-9 initiated."
+    "Encryption protocol Alpha-9 initiated.",
+    "Reality is just a collective hallucination.",
+    "Quantum superposition detected in the kernel.",
+    "সিস্টেম ব্যাকআপ সম্পন্ন হয়েছে।"
 ];
+
+// --- CORE MODULES ---
+
+// Matrix Rain Effect
+function initMatrix() {
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$@#%&*+=-";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+    }
+
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00ff41";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 35);
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// System Clock & Resource Monitor
+function initVitals() {
+    const clockEl = document.getElementById('system-clock');
+    const cpuBar = document.getElementById('cpu-bar');
+    const memBar = document.getElementById('mem-bar');
+
+    function update() {
+        // Clock
+        const now = new Date();
+        clockEl.innerText = now.toLocaleTimeString('en-US', { hour12: false });
+
+        // Vitals
+        const cpu = Math.floor(Math.random() * 20) + 30; // 30-50%
+        const mem = Math.floor(Math.random() * 10) + 60; // 60-70%
+        cpuBar.style.width = cpu + "%";
+        memBar.style.width = mem + "%";
+    }
+    setInterval(update, 1000);
+}
 
 const feed = document.getElementById('chat-feed');
 const input = document.getElementById('user-input');
@@ -127,6 +189,8 @@ input.addEventListener('keypress', async (e) => {
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
+    initMatrix();
+    initVitals();
     setTimeout(() => {
         postMessage({ name: "SYSTEM", color: "#666" }, ">> INITIALIZING NEURAL_LINK...");
         setTimeout(() => {
