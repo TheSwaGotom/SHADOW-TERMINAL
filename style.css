@@ -222,11 +222,11 @@ body::before {
 .chat-feed {
     flex: 1;
     overflow-y: auto;
-    padding: 40px;
+    padding: 20px 40px;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .message-item {
@@ -246,18 +246,19 @@ body::before {
 }
 
 .persona-info {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-shadow: 0 0 5px currentColor;
 }
 
 .persona-info::before {
-    content: "■";
+    content: ">>";
     font-size: 0.7rem;
-    animation: blink 1s infinite;
+    color: inherit;
 }
 
 .msg-text {
@@ -324,26 +325,23 @@ body::before {
 /* --- SYSTEM AD MODULES --- */
 .system-ad {
     border: 1px solid var(--border-glow);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 255, 65, 0.02);
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 50px;
 }
 
 .system-ad::after {
-    content: "ADS_BUFFER_SECURED";
+    content: "SECURE_AD_STREAM";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: var(--border-glow);
-    color: #000;
+    top: 2px;
+    right: 5px;
     font-size: 0.5rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 2px;
+    color: var(--border-glow);
+    opacity: 0.5;
 }
 
 .banner-728 {

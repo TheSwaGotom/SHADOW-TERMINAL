@@ -70,7 +70,7 @@
             </header>
 
             <!-- Top Banner (728x90) -->
-            <div class="system-ad banner-728">
+            <div class="system-ad banner-728" style="margin: 10px auto;">
                 <script type="text/javascript">
                     atOptions = {
                         'key': '28613389',
@@ -84,23 +84,7 @@
             </div>
 
             <!-- Dynamic Chat Feed -->
-            <section id="chat-feed" class="chat-feed">
-                <!-- Data stream initialized by script.js -->
-            </section>
-
-            <!-- Bottom Ad (Native) -->
-            <div class="system-ad" style="height: 250px; margin: 0 40px 10px 40px;">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key': '28613380',
-                        'format': 'iframe',
-                        'height': 250,
-                        'width': 300,
-                        'params': {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/28613380/invoke.js"></script>
-            </div>
+            <section id="chat-feed" class="chat-feed"></section>
 
             <!-- Command Input Hub -->
             <footer class="input-hub">
@@ -118,8 +102,23 @@
                 <span>NETWORK_STATS</span>
                 <span>NODE_09</span>
             </div>
-            <div class="system-ad" style="height: 600px; width: 100%;">
-                <div style="color: #444; font-size: 0.7rem;">[AD_SLOT_160x600]</div>
+
+            <!-- Native Ad (Zone ID: 28613380) Moved here to clear the main chat view -->
+            <div class="system-ad" style="height: 250px; width: 100%; margin-bottom: 20px;">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '28613380',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/28613380/invoke.js"></script>
+            </div>
+
+            <div class="system-ad" style="height: 350px; width: 100%;">
+                <div style="color: rgba(0,255,65,0.2); font-size: 0.6rem;">[SECURE_DATA_STREAM]</div>
             </div>
         </aside>
     </div>
