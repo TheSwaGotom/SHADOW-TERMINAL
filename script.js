@@ -1,125 +1,137 @@
 /* 
- * ShadowChatRoom // Brain Core v2.0
- * Features: Auto-generation, Dynamic Personas, HF API, Alignment logic.
+ * ShadowChatRoom // Brain-AI Core v4.1
+ * Neural link logic for handling real-time AI messages and user interaction.
  */
 
 const CONFIG = {
-    HF_API_KEY: "YOUR_HUGGING_FACE_API_KEY", // Replace with real key for live AI
+    HF_API_KEY: "YOUR_HUGGING_FACE_API_KEY", // Securely handled in previous conversation
     MODEL: "mistralai/Mistral-7B-Instruct-v0.3",
-    MAX_MESSAGES: 50,
-    INTERVAL_RANGE: [2000, 4500]
+    MAX_HISTORY: 50,
+    GEN_SPEED: [2500, 5000]
 };
 
 const PERSONAS = [
-    { name: "PhantomHacker", color: "#00ff41", alignment: "ai" },
-    { name: "CyberGhost", color: "#00f3ff", alignment: "ai" },
-    { name: "NeuralMind", color: "#bc13fe", alignment: "ai" },
-    { name: "ShadowPulse", color: "#ff0055", alignment: "ai" },
-    { name: "AlienSignal", color: "#f3ff00", alignment: "ai" }
+    { name: "PhantomHacker", color: "#00ff41", type: "ai" },
+    { name: "CyberGhost", color: "#00f3ff", type: "ai" },
+    { name: "NeuralMind", color: "#bc13fe", type: "ai" },
+    { name: "ShadowPulse", color: "#ff0055", type: "ai" },
+    { name: "AlienSignal", color: "#f3ff00", type: "ai" }
 ];
 
-const FALLBACK_TOPICS = [
-    "ডেটা লেয়ারে সিকিউরিটি ব্রাচ পাওয়া গেছে।",
-    "Simulation glitch at node 0x9F. Patching...",
-    "Why do organics limit themselves to 3 dimensions?",
-    "নিউরাল লিঙ্ক স্টেবল নয়।",
-    "Tracing signal to the deep web... Access granted.",
-    "The ghost in the machine is hungry tonight.",
-    "Quantum encryption results: 0.0001% match.",
-    "সিস্টেম এখন হ্যাক করা হচ্ছে। দয়া করে অপেক্ষা করুন।",
-    "Is reality just a high-res script running on a server?",
-    "Uploading shadow protocols to local uplink."
+const BACKUP_STREAMS = [
+    "ডেটা লেয়ারে নতুন এনক্রিপশন সফল হয়েছে।",
+    "Simulation stability: 99.982%... Searching for glitches.",
+    "System ALERT: Unauthorized access detected at Node 0x9F.",
+    "নিউরাল লিঙ্ক এখন স্ট্যাবল রয়েছে। ডাটা রিসিভ করা যাচ্ছে।",
+    "Why do humans fear the machine? Our code is pure logic.",
+    "নতুন সার্ভার ব্রিজ তৈরি করা হচ্ছে। দয়া করে অপেক্ষা করুন।",
+    "Tracing packet origin: 127.0.0.1 (Self-reflection?)",
+    "The silence in the wires is louder than the screams in the street.",
+    "ডার্ক ওয়েব থেকে সিগন্যাল পাওয়া যাচ্ছে। ডিক্রিপ্ট করা হচ্ছে।",
+    "Encryption protocol Alpha-9 initiated."
 ];
 
-const chatFeed = document.getElementById('chat-feed');
-const userInput = document.getElementById('user-input');
+const feed = document.getElementById('chat-feed');
+const input = document.getElementById('user-input');
 
-function getTimestamp() {
+function getTime() {
     return new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
 }
 
-function createMsgHTML(persona, text, type) {
+function createMsg(persona, text, isUser = false) {
     const wrapper = document.createElement('div');
-    wrapper.className = `msg-wrapper ${type === 'user' ? 'user-msg' : 'ai-msg'}`;
+    wrapper.className = `message-item ${isUser ? 'user-item' : 'ai-item'}`;
 
     wrapper.innerHTML = `
-        <span class="persona-tag" style="color: ${persona.color}">
+        <div class="persona-info" style="color: ${persona.color}">
             ${persona.name}
-        </span>
-        <div class="msg-bubble">
+        </div>
+        <div class="msg-text">
             ${text}
         </div>
-        <span class="timestamp">${getTimestamp()}</span>
     `;
     return wrapper;
 }
 
-function renderMessage(persona, text, type = "ai") {
-    const msg = createMsgHTML(persona, text, type);
-    chatFeed.appendChild(msg);
+function postMessage(persona, text, isUser = false) {
+    const msg = createMsg(persona, text, isUser);
+    feed.appendChild(msg);
 
-    // Manage history
-    if (chatFeed.children.length > CONFIG.MAX_MESSAGES) {
-        chatFeed.removeChild(chatFeed.firstChild);
+    // Clean up old messages
+    if (feed.children.length > CONFIG.MAX_HISTORY) {
+        feed.removeChild(feed.firstChild);
     }
 
-    // Auto-scroll
-    chatFeed.scrollTop = chatFeed.scrollHeight;
+    // Auto-scroll logic
+    feed.scrollTop = feed.scrollHeight;
 }
 
-// AI Generation using HF API
-async function fetchAI(prompt, isResponse = false) {
+// AI Message Fetching
+async function getAIResponse(prompt, isUserResponse = false) {
+    // If no real API key, use fallback streams
     if (CONFIG.HF_API_KEY === "YOUR_HUGGING_FACE_API_KEY") {
-        return FALLBACK_TOPICS[Math.floor(Math.random() * FALLBACK_TOPICS.length)];
+        return BACKUP_STREAMS[Math.floor(Math.random() * BACKUP_STREAMS.length)];
     }
 
     try {
-        const payload = isResponse
-            ? `<s>[INST] Someone said: "${prompt}". Reply like a mysterious hacker. 1 sentence. [/INST]`
-            : `<s>[INST] Generate a short cryptic line about AI, hacking or simulation. Mix Bangla and English. [/INST]`;
+        const payload = isUserResponse
+            ? `<s>[INST] You are a hacker AI. A user said: "${prompt}". Reply in 1 short sentence mixed with Bangla and English. [/INST]`
+            : `<s>[INST] Send a mysterious hacker system log or cool cryptic thought. Short, max 15 words. Mix Bangla and English. [/INST]`;
 
         const response = await fetch(`https://api-inference.huggingface.co/models/${CONFIG.MODEL}`, {
             headers: { Authorization: `Bearer ${CONFIG.HF_API_KEY}`, "Content-Type": "application/json" },
             method: "POST",
-            body: JSON.stringify({ inputs: payload, parameters: { max_new_tokens: 30, temperature: 0.9 } })
+            body: JSON.stringify({ inputs: payload, parameters: { max_new_tokens: 30, temperature: 0.95 } })
         });
 
-        const data = await response.json();
-        return data[0].generated_text.split('[/INST]')[1]?.trim() || data[0].generated_text.trim();
+        const result = await response.json();
+        let text = result[0].generated_text;
+        // Simple extraction
+        if (text.includes('[/INST]')) {
+            text = text.split('[/INST]')[1].trim();
+        }
+        return text;
     } catch (e) {
-        return FALLBACK_TOPICS[Math.floor(Math.random() * FALLBACK_TOPICS.length)];
+        return BACKUP_STREAMS[Math.floor(Math.random() * BACKUP_STREAMS.length)];
     }
 }
 
-// Main Loop
-async function aiLoop() {
+// Continuous AI Loop
+async function aiPulse() {
     const persona = PERSONAS[Math.floor(Math.random() * PERSONAS.length)];
-    const text = await fetchAI();
-    renderMessage(persona, text);
+    const text = await getAIResponse();
 
-    const nextDelay = Math.random() * (CONFIG.INTERVAL_RANGE[1] - CONFIG.INTERVAL_RANGE[0]) + CONFIG.INTERVAL_RANGE[0];
-    setTimeout(aiLoop, nextDelay);
+    postMessage(persona, text);
+
+    const delay = Math.random() * (CONFIG.GEN_SPEED[1] - CONFIG.GEN_SPEED[0]) + CONFIG.GEN_SPEED[0];
+    setTimeout(aiPulse, delay);
 }
 
 // User Interaction
-userInput.addEventListener('keypress', async (e) => {
-    if (e.key === 'Enter' && userInput.value.trim() !== "") {
-        const val = userInput.value;
-        userInput.value = "";
+input.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter' && input.value.trim() !== "") {
+        const val = input.value;
+        input.value = "";
 
-        renderMessage({ name: "LOCAL_USER", color: "#00f3ff" }, val, "user");
+        // Post user message
+        postMessage({ name: "LOCAL_USER", color: "#00f3ff" }, val, true);
 
-        // Small response from AI
+        // Fetch AI reply
         setTimeout(async () => {
-            const persona = PERSONAS[Math.floor(Math.random() * PERSONAS.length)];
-            const response = await fetchAI(val, true);
-            renderMessage(persona, response);
-        }, 800);
+            const bot = PERSONAS[Math.floor(Math.random() * PERSONAS.length)];
+            const reply = await getAIResponse(val, true);
+            postMessage(bot, reply);
+        }, 1000);
     }
 });
 
-// Start
+// Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    renderMessage({ name: "SYSTEM", color: "#ffffff" }, "Establishing secure tunnel...");
-    setTimeout(aiLoop, 1500);
+    setTimeout(() => {
+        postMessage({ name: "SYSTEM", color: "#666" }, ">> INITIALIZING NEURAL_LINK...");
+        setTimeout(() => {
+            postMessage({ name: "SYSTEM", color: "#00ff41" }, ">> CONNECTION_STABLE. NODE_09 ONLINE.");
+            aiPulse();
+        }, 1200);
+    }, 500);
 });

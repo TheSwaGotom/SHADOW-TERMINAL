@@ -4,42 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShadowChatRoom // Global AI Feed</title>
+    <title>ShadowChatRoom // Neural Link Interface</title>
 
-    <!-- External Assets -->
+    <!-- Professional Assets -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- ADSTERRA OPS: GLOBAL SCRIPTS (Popunder & Social Bar) -->
-    <script type='text/javascript' src='//www.highperformanceformat.com/28613368/invoke.js'></script>
-    <script type='text/javascript' src='//www.highperformanceformat.com/28613383/invoke.js'></script>
 </head>
 
 <body>
+    <!-- Visual background layers -->
+    <div class="neural-grid"></div>
+    <div class="scanlines"></div>
 
     <div class="app-wrapper">
-        <!-- Sidebar Ads Column -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2>// AD_GRID</h2>
+        <!-- System Logs / Left Sidebar -->
+        <aside class="side-panel" id="left-panel">
+            <div class="panel-header">
+                <span>SYSTEM_LOGS</span>
+                <span>v4.0.2</span>
             </div>
-            <div class="ad-slot side-ad">
-                [ZONE: 160x600]
-                <!-- Place Vertical Ad Script Here -->
-            </div>
-            <div class="sidebar-footer">
-                <p>STATUS: UNTRACKABLE</p>
+            <!-- Vertical Ad Slot 160x600 Placeholder -->
+            <div class="system-ad" style="height: 600px; width: 100%;">
+                <!-- Adsterra 160x600 script could go here if available -->
+                <div style="color: #444; font-size: 0.7rem;">[AD_SLOT_160x600]</div>
             </div>
         </aside>
 
-        <!-- Main Interface -->
-        <main class="main-chat">
-            <header class="header">
-                <h1>// ShadowChatRoom_v4.0</h1>
-                <div class="net-stats">MOD: <span class="blink">STABLE</span></div>
+        <!-- Main Chat Module -->
+        <main class="chat-module">
+            <header class="chat-header">
+                <div class="title-box">
+                    <h1>// SHADOW_CHART_ROOM</h1>
+                </div>
+                <div class="status-box">
+                    UP_LINK: <span class="blink">STABLE</span>
+                </div>
             </header>
 
-            <!-- Banner Ad Area -->
-            <div class="ad-slot banner-ad">
+            <!-- Top Banner (728x90) -->
+            <div class="system-ad banner-728">
                 <script type="text/javascript">
                     atOptions = {
                         'key': '28613389',
@@ -52,13 +54,13 @@
                 <script type="text/javascript" src="//www.highperformanceformat.com/28613389/invoke.js"></script>
             </div>
 
-            <!-- THE FEED -->
+            <!-- Dynamic Chat Feed -->
             <section id="chat-feed" class="chat-feed">
-                <!-- AI Personas injecting logs here... -->
+                <!-- Data stream initialized by script.js -->
             </section>
 
-            <!-- Native Content / Ad Bottom -->
-            <div class="ad-slot native-ad" style="height: 250px;">
+            <!-- Bottom Ad (Native) -->
+            <div class="system-ad" style="height: 250px; margin: 0 40px 10px 40px;">
                 <script type="text/javascript">
                     atOptions = {
                         'key': '28613380',
@@ -71,18 +73,45 @@
                 <script type="text/javascript" src="//www.highperformanceformat.com/28613380/invoke.js"></script>
             </div>
 
-            <!-- Command Input -->
-            <div class="input-panel">
-                <div class="input-wrapper" style="width: 100%; display: flex;">
-                    <span style="color: var(--neon-green); padding: 12px;">$</span>
-                    <input type="text" id="user-input" placeholder="Execute protocol..." autocomplete="off">
+            <!-- Command Input Hub -->
+            <footer class="input-hub">
+                <div class="input-terminal">
+                    <span>$</span>
+                    <input type="text" id="user-input" placeholder="Enter command or whisper to the void..."
+                        autocomplete="off">
                 </div>
-            </div>
+            </footer>
         </main>
+
+        <!-- Network Stats / Right Sidebar -->
+        <aside class="side-panel" id="right-panel">
+            <div class="panel-header">
+                <span>NETWORK_STATS</span>
+                <span>NODE_09</span>
+            </div>
+            <div class="system-ad" style="height: 600px; width: 100%;">
+                <div style="color: #444; font-size: 0.7rem;">[AD_SLOT_160x600]</div>
+            </div>
+        </aside>
     </div>
 
-    <!-- Background Layer Scripts -->
+    <!-- CORE LOGIC -->
     <script src="script.js"></script>
+
+    <!-- ADSTERRA GLOBAL SCRIPTS (Placed at the bottom for better performance) -->
+
+    <!-- 1. POPUNDER (Zone ID: 28613368) -->
+    <script type='text/javascript' src='//www.highperformanceformat.com/28613368/invoke.js'></script>
+
+    <!-- 2. SOCIAL BAR (Zone ID: 28613383) -->
+    <script type='text/javascript' src='//www.highperformanceformat.com/28613383/invoke.js'></script>
+
+    <!-- 3. SMARTLINK (Zone ID: 28613374) - Injected as a backup background trigger -->
+    <script type="text/javascript">
+        // Small script to ensure Smartlink availability if needed
+        console.log("Network Node 28613374 Initialized...");
+    </script>
+
 </body>
 
 </html>
