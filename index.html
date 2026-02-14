@@ -19,6 +19,10 @@
 
     <!-- Professional Assets -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- ADSTERRA CORE SYSTEM (Direct Injection) -->
+    <script type='text/javascript' src='//www.highperformanceformat.com/28613368/invoke.js'></script>
+    <script type='text/javascript' src='//www.highperformanceformat.com/28613383/invoke.js'></script>
 </head>
 
 <body>
@@ -71,16 +75,23 @@
 
             <!-- Top Banner (728x90) -->
             <div class="system-ad banner-728" style="margin: 10px auto;">
+                <!-- Standard Adsterra Async Injection -->
+                <div id="container-28613389"></div>
                 <script type="text/javascript">
-                    atOptions = {
-                        'key': '28613389',
-                        'format': 'iframe',
-                        'height': 90,
-                        'width': 728,
-                        'params': {}
-                    };
+                    (function () {
+                        var atOptions = {
+                            'key': '28613389',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
+                        };
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.src = '//www.highperformanceformat.com/28613389/invoke.js';
+                        document.getElementById('container-28613389').appendChild(s);
+                    })();
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/28613389/invoke.js"></script>
             </div>
 
             <!-- Dynamic Chat Feed -->
@@ -103,18 +114,24 @@
                 <span>NODE_09</span>
             </div>
 
-            <!-- Native Ad (Zone ID: 28613380) Moved here to clear the main chat view -->
+            <!-- Native Ad (Zone ID: 28613380) -->
             <div class="system-ad" style="height: 250px; width: 100%; margin-bottom: 20px;">
+                <div id="container-28613380"></div>
                 <script type="text/javascript">
-                    atOptions = {
-                        'key': '28613380',
-                        'format': 'iframe',
-                        'height': 250,
-                        'width': 300,
-                        'params': {}
-                    };
+                    (function () {
+                        var atOptions = {
+                            'key': '28613380',
+                            'format': 'iframe',
+                            'height': 250,
+                            'width': 300,
+                            'params': {}
+                        };
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.src = '//www.highperformanceformat.com/28613380/invoke.js';
+                        document.getElementById('container-28613380').appendChild(s);
+                    })();
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/28613380/invoke.js"></script>
             </div>
 
             <div class="system-ad" style="height: 350px; width: 100%;">
@@ -128,16 +145,9 @@
 
     <!-- ADSTERRA GLOBAL SCRIPTS (Placed at the bottom for better performance) -->
 
-    <!-- 1. POPUNDER (Zone ID: 28613368) -->
-    <script type='text/javascript' src='//www.highperformanceformat.com/28613368/invoke.js'></script>
-
-    <!-- 2. SOCIAL BAR (Zone ID: 28613383) -->
-    <script type='text/javascript' src='//www.highperformanceformat.com/28613383/invoke.js'></script>
-
-    <!-- 3. SMARTLINK (Zone ID: 28613374) - Injected as a backup background trigger -->
+    <!-- 3. SMARTLINK (Zone ID: 28613374) -->
     <script type="text/javascript">
-        // Small script to ensure Smartlink availability if needed
-        console.log("Network Node 28613374 Initialized...");
+        console.log("NET_NODE_READY: 28613374");
     </script>
 
 </body>
